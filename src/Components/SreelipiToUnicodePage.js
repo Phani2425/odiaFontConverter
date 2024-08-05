@@ -1,0 +1,290 @@
+
+// import React, { useState } from 'react';
+// import './SreelipiToUnicodePage.css';
+
+// const SreelipiToUnicodePage = () => {
+//     const [sreelipiText, setSreelipiText] = useState('');
+//     const [unicodeText, setUnicodeText] = useState('');
+
+//     const array_one = [
+//         ">", " ।", "ÿ", "", "􀃛", "", "ç§", "§ç", "􀁞", "{", "{ç ", "ç{", "{ç", "ç{", "ôæ", "æô", " {# ", "#{", "{#", "#{",
+//         "¿â", "â¿", "􀀃", " ", "  ", " ", "C", "ଈ", "þ#", "ତ୍ମ", "Œ", "ତ୍ପ", "”", "ଦ୍ଦ", "b", "ଚ୍ଛ", "t", "ଟ୍ଟ", "􀁲", "ଦ୍ଦ",
+//         "􀁪", "ତ୍ମ", "􀁧", "ତ୍କ", "û", "ତ୍ସ", "􀁩", "ତ୍ତ୍ଵ", "½", "୍ମ", "􀁵", "ଦ୍ଭ", "", "↑", "#", "ି", "¸", "ମ୍ପ", "¹",
+//         "ମ୍ଫ", "¼", "ମ୍ମ", "Ú", "ସ୍ତ୍ର", "Í", "ଷ୍କ", "O", "କ୍ସ", "Ð", "ଷ୍ଣ", "À", "ର", "à", "ଲ", "Ü", "ହ", "􀁨", "ତ୍ତ",
+//         "Õ", "ସ୍ଖ", "–", "ର୍ଦ୍ଧ୍ୱ", "—", "ଦ୍ଭୁ", "L", "କ", "Q", "ଖ", "S", "ଗ", "W", "ଘ", "`", "ଚ", "a", "ଚ୍ଚ", "d", "ଛ",
+//         "f", "ଜ", "l", "ଝ", "s", "ଟ", "v", "ଠ", "Ý", "ଡ଼", "x", "ଡ", "Þ", "ଢ଼", "|", "ଢ", "~", "ଣ", "􀁢", "ଣ୍ଣ", "􀁦", "ତ",
+//         "†", "ତ", "$", "ଥ", "􀁰", "ଦ", "’", "ଦ", "􀁷", "ଧ", "™", "ଧ", "􀁺", "ନ", "œ", "ନ", "oe", "ନ", "¨", "ପ", "􀂄", "ପ",
+//         "ü", "ଫ", "¯", "ବ", "μ", "ଭ", "µ", "ଭ", "þ", "ମ", "􀃚", "ମ", "¾", "ଯ", "Á", "ଳ", "É", "ଶ", "􀂥", "ଶ", "Ì", "ଷ",
+//         "Ó", "ସ", "ä", "କ୍ଷ", "j", "ଜ୍ଞ", "o", "ଞ୍ଚ", "p", "ଞ୍ଛ", "¢", "ନ୍ଦ", "£", "ନ୍ଦ", "¤", "ନ୍ଧ", "ƒ", "ଣ୍ଡ", "º",
+//         "ମ୍ବ", "»", "ମ୍ଭ", "±", "ବ୍ଦ", "􀁳", "ଦ୍ଧ", "²", "ବ୍ଧ", "¡", "ନ୍ଥ", "×", "ସ୍ଥ", "􀁻", "ନ୍ନ", "􀁸", "ଧ୍ୟ",
+//         "š", "ଧ୍ୟ", "ø", "÷ë", "÷", "୍ର", "¿", "୍ୟ", "´", "୍ୱ", "Ô", "ସ୍କ", "§", "୍ନ", "ü", "ଫ", "u", "ଫ", "Û", "୍ସ",
+//         "^", "ଙ୍ଘ", "&", "", "􀃗", "", "􀂁", "", "􀀘 ", "", "􀃗", "", "Ÿ", "ନ୍ନ", "•", "ଦ୍ଧ", "ˆ", "ତ୍ତ", ";", "ନ୍ତ",
+//         "'ନ୍ତ", "';", ",ନ୍ତ", ",;", "0ନ୍ତ", "0;", "1ନ୍ତ", "1;", "2ନ୍ତ", "2;", "3ନ୍ତ", "3;", "4ନ୍ତ", "4;", "5ନ୍ତ", "5;",
+//         "6ନ୍ତ", "6;", "7ନ୍ତ", "7;", "8ନ୍ତ", "8;", "9ନ୍ତ", "9;", "􀁣", "ଣ୍ଡ", " ß", "ୟ", "ß", "ୟ", "Ö", "ସ୍ତ", "N", "କ୍ତ",
+//         "¦", "ନ୍ତ୍ର", "g", "ଜ୍ଜ", "©", "ପ୍ତ", "‡", "ତ୍କ", "Š", "ତ୍ମ", "‚", "ଣ୍ଣ", "Z", "ଙ୍କ", "\\", "ଙ୍ଖ", "\\è", "ଙ୍ଗ",
+//         "q", "ଞ୍ଜ", "+", "ଣ୍ଟ", "Î", "ଷ୍ଟ", "Ê", "ଶ୍ଚ", "Ï", "ଷ୍ଠ", "Å", "ଳ୍ପ", "Ñ", "ଷ୍ପ", "Ø", "ସ୍ପ", "Ù", "ସ୍ପ", " æ",
+//         "ା", "æ", "ା", "􀃂", "ା", " ା", " ।", " ç", "ି", "ÿ]", "ିଁ", "ç", "ି", "􀃃", "ି", "ê", "ୀ", "􀃆", "ୀ", " ë", "ୁ",
+//         "ë", "ୁ", "􀃇", "ୁ", "í", "ୂ", "õ ", "ୃ", "õ", "ୃ", "ô", "ଁ", "􀁥", "ଃ", "…", "ଃ", "ú", "୍‍", "ó", "ଂ", "]",
+//         "ିଁ", "â", "୍ଲ", "È", "୍ଳ", "úÿ", "୍‌", ' ̄', "ବ", '̄', "ବ", ' ́', "୍ୱ", '́', "୍ୱ", '̈', 'ପ', "A", "ଅ", "􀀤",
+//         "ଅ", "ଅା", "ଆ", "B", "ଇ", "􀀥", "ଇ", "D", "ଉ", "􀀧", "ଉ", "E", "ଊ", "J", "ଋ", "F", "ଏ", "G", "ଐ", "􀀪", "ଐ",
+//         "H", "ଓ", "I", "ଔ", "K", "ଔ"
+//     ];
+
+
+//     const convertToUnicode = () => {
+//         let text = sreelipiText;
+//         const chunkSize = 6000;
+//         let processedText = '';
+//         let cond1 = 0;
+//         let cond2 = 0;
+//         let chaleChalo = true;
+
+//         while (chaleChalo) {
+//             cond1 = cond2;
+//             if (cond2 < text.length - chunkSize) {
+//                 cond2 += chunkSize;
+//             } else {
+//                 cond2 = text.length;
+//                 chaleChalo = false;
+//             }
+
+//             let modifiedSubstring = text.substring(cond1, cond2);
+//             modifiedSubstring = replaceSymbols(modifiedSubstring);
+//             processedText += modifiedSubstring;
+
+//             setUnicodeText(`Conversion in progress..\n\nConversion of ${cond2} characters out of ${text.length} completed.`);
+//         }
+
+//         setUnicodeText(processedText);
+//     };
+
+//     const replaceSymbols = (modifiedSubstring) => {
+//         const arrayOneLength = array_one.length;
+
+//         for (let i = 0; i < arrayOneLength; i += 2) {
+//             const sreelipiSymbol = new RegExp(array_one[i], 'g');
+//             const unicodeSymbol = array_one[i + 1];
+//             modifiedSubstring = modifiedSubstring.replace(sreelipiSymbol, unicodeSymbol);
+//         }
+
+//         modifiedSubstring = modifiedSubstring.replace(/([କଖଗଘଙଚଛଜଝଞଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])([୍])([୍ଅଈଉଋ])([ାିୀୁୂୃେୈୋୌଂଁ])/g, "$1$3$2$4");
+//         modifiedSubstring = modifiedSubstring.replace(/([କଖଗଘଙଚଛଜଝଞଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])([୍])([କଖଗଘଙଚଛଜଝଞଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])/g, "$2$3$1");
+//         modifiedSubstring = modifiedSubstring.replace(/([{])([୍])([କଖଗଘଙଚଛଜଝଞଟଠଡଡ଼ଢଢ଼ତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])/g, "$2$3$1");
+//         modifiedSubstring = modifiedSubstring.replace(/{ð/g, "ୈ");
+//         modifiedSubstring = modifiedSubstring.replace(/{ା/g, "ୋ");
+//         modifiedSubstring = modifiedSubstring.replace(/{ò/g, "ୌ");
+//         modifiedSubstring = modifiedSubstring.replace(/{/g, "େ");
+//         modifiedSubstring = modifiedSubstring.replace(/([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])([ାିୀୁୂୃେୈୋୌଂଁ]*)ö/g, "ö$1$2");
+//         modifiedSubstring = modifiedSubstring.replace(/([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])([୍])ö/g, "ö$1$2");
+//         modifiedSubstring = modifiedSubstring.replace(/ö/g, "ର୍");
+//         modifiedSubstring = modifiedSubstring.replace(/([ଂଁ])([ାିୀୁୂୃେୈୋୌ])/g, "$2$1");
+//         modifiedSubstring = modifiedSubstring.replace(/([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])([ାିୀୁୂୃେୈୋୌଂଁ]*)}/g, "}$1$2ି");
+//         modifiedSubstring = modifiedSubstring.replace(/([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])([୍])}/g, "}$1$2");
+//         modifiedSubstring = modifiedSubstring.replace(/}/g, "ର୍");
+//         modifiedSubstring = modifiedSubstring.replace(/ˆ/g, "ତ୍ତ");
+
+//         return modifiedSubstring;
+//     };
+
+//     const handleClearText = () => {
+//         setSreelipiText('');
+//         setUnicodeText('');
+//     };
+
+//     const handleCopyOutput = () => {
+//         navigator.clipboard.writeText(unicodeText);
+//     };
+
+//     return (
+//         <div className="converter">
+//             <h1>Sreelipi to Unicode Converter</h1>
+//             <textarea
+//                 value={sreelipiText}
+//                 onChange={(e) => setSreelipiText(e.target.value)}
+//                 placeholder="Enter Sreelipi text here"
+//                 rows="10"
+//                 cols="50"
+//             ></textarea>
+
+//             <textarea
+//                 value={unicodeText}
+//                 onChange={(e) => setUnicodeText(e.target.value)}
+//                 placeholder="Converted Unicode text will appear here"
+//                 rows="10"
+//                 cols="50"
+//             ></textarea>
+
+//             <div className="buttons">
+//                 <button onClick={convertToUnicode}>Convert</button>
+//                 <button onClick={handleClearText}>Clear Text</button>
+//                 <button onClick={handleCopyOutput}>Copy Output</button>
+//             </div>
+
+//             <br/>
+//             <br/>
+
+//             <div>
+//             <button onClick={() => window.location.href = '/'}>Back to Home</button>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default SreelipiToUnicodePage;
+
+
+import React, { useState } from 'react';
+
+const SreelipiToUnicodeConverter = () => {
+  const [legacyText, setLegacyText] = useState('');
+  const [unicodeText, setUnicodeText] = useState('');
+
+  const array_one = [
+    ">", " ।", "ÿ", "", "􀃛", "", "ç§", "§ç", "􀁞", "{", "{ç ", "ç{", "{ç", "ç{", "ôæ", "æô", " {# ", "#{", "{#", "#{",
+    "¿â", "â¿", "􀀃", " ", "  ", " ", "C", "ଈ", "þ#", "ତ୍ମ", "Œ", "ତ୍ପ", "”", "ଦ୍ଦ", "b", "ଚ୍ଛ", "t", "ଟ୍ଟ", "􀁲", "ଦ୍ଦ",
+    "􀁪", "ତ୍ମ", "􀁧", "ତ୍କ", "û", "ତ୍ସ", "􀁩", "ତ୍ତ୍ଵ", "½", "୍ମ", "􀁵", "ଦ୍ଭ", "", "↑", "#", "ି", "¸", "ମ୍ପ", "¹",
+    "ମ୍ଫ", "¼", "ମ୍ମ", "Ú", "ସ୍ତ୍ର", "Í", "ଷ୍କ", "O", "କ୍ସ", "Ð", "ଷ୍ଣ", "À", "ର", "à", "ଲ", "Ü", "ହ", "􀁨", "ତ୍ତ",
+    "Õ", "ସ୍ଖ", "–", "ର୍ଦ୍ଧ୍ୱ", "—", "ଦ୍ଭୁ", "L", "କ", "Q", "ଖ", "S", "ଗ", "W", "ଘ", "`", "ଚ", "a", "ଚ୍ଚ", "d", "ଛ",
+    "f", "ଜ", "l", "ଝ", "s", "ଟ", "v", "ଠ", "Ý", "ଡ଼", "x", "ଡ", "Þ", "ଢ଼", "|", "ଢ", "~", "ଣ", "􀁢", "ଣ୍ଣ", "􀁦", "ତ",
+    "†", "ତ", "$", "ଥ", "􀁰", "ଦ", "’", "ଦ", "􀁷", "ଧ", "™", "ଧ", "􀁺", "ନ", "œ", "ନ", "oe", "ନ", "¨", "ପ", "􀂄", "ପ",
+    "ü", "ଫ", "¯", "ବ", "μ", "ଭ", "µ", "ଭ", "þ", "ମ", "􀃚", "ମ", "¾", "ଯ", "Á", "ଳ", "É", "ଶ", "􀂥", "ଶ", "Ì", "ଷ",
+    "Ó", "ସ", "ä", "କ୍ଷ", "j", "ଜ୍ଞ", "o", "ଞ୍ଚ", "p", "ଞ୍ଛ", "¢", "ନ୍ଦ", "£", "ନ୍ଦ", "¤", "ନ୍ଧ", "ƒ", "ଣ୍ଡ", "º",
+    "ମ୍ବ", "»", "ମ୍ଭ", "±", "ବ୍ଦ", "􀁳", "ଦ୍ଧ", "²", "ବ୍ଧ", "¡", "ନ୍ଥ", "×", "ସ୍ଥ", "􀁻", "ନ୍ନ", "􀁸", "ଧ୍ୟ",
+    "š", "ଧ୍ୟ", "ø", "÷ë", "÷", "୍ର", "¿", "୍ୟ", "´", "୍ୱ", "Ô", "ସ୍କ", "§", "୍ନ", "ü", "ଫ", "u", "ଫ", "Û", "୍ସ",
+    "^", "ଙ୍ଘ", "&", "", "􀃗", "", "􀂁", "", "􀀘 ", "", "􀃗", "", "Ÿ", "ନ୍ନ", "•", "ଦ୍ଧ", "ˆ", "ତ୍ତ", ";", "ନ୍ତ",
+    "'ନ୍ତ", "';", ",ନ୍ତ", ",;", "0ନ୍ତ", "0;", "1ନ୍ତ", "1;", "2ନ୍ତ", "2;", "3ନ୍ତ", "3;", "4ନ୍ତ", "4;", "5ନ୍ତ", "5;",
+    "6ନ୍ତ", "6;", "7ନ୍ତ", "7;", "8ନ୍ତ", "8;", "9ନ୍ତ", "9;", "􀁣", "ଣ୍ଡ", " ß", "ୟ", "ß", "ୟ", "Ö", "ସ୍ତ", "N", "କ୍ତ",
+    "¦", "ନ୍ତ୍ର", "g", "ଜ୍ଜ", "©", "ପ୍ତ", "‡", "ତ୍କ", "Š", "ତ୍ମ", "‚", "ଣ୍ଣ", "Z", "ଙ୍କ", "\\", "ଙ୍ଖ", "\\è", "ଙ୍ଗ",
+    "q", "ଞ୍ଜ", "+", "ଣ୍ଟ", "Î", "ଷ୍ଟ", "Ê", "ଶ୍ଚ", "Ï", "ଷ୍ଠ", "Å", "ଳ୍ପ", "Ñ", "ଷ୍ପ", "Ø", "ସ୍ପ", "Ù", "ସ୍ପ", " æ",
+    "ା", "æ", "ା", "􀃂", "ା", " ା", " ।", " ç", "ି", "ÿ]", "ିଁ", "ç", "ି", "􀃃", "ି", "ê", "ୀ", "􀃆", "ୀ", " ë", "ୁ",
+    "ë", "ୁ", "􀃇", "ୁ", "í", "ୂ", "õ ", "ୃ", "õ", "ୃ", "ô", "ଁ", "􀁥", "ଃ", "…", "ଃ", "ú", "୍‍", "ó", "ଂ", "]",
+    "ିଁ", "â", "୍ଲ", "È", "୍ଳ", "úÿ", "୍‌", ' ̄', "ବ", '̄', "ବ", ' ́', "୍ୱ", '́', "୍ୱ", '̈', 'ପ', "A", "ଅ", "􀀤",
+    "ଅ", "ଅା", "ଆ", "B", "ଇ", "􀀥", "ଇ", "D", "ଉ", "􀀧", "ଉ", "E", "ଊ", "J", "ଋ", "F", "ଏ", "G", "ଐ", "􀀪", "ଐ",
+    "H", "ଓ", "I", "ଔ", "K", "ଔ", "0", "୦", "1", "୧", "2", "୨", "3", "୩", "4", "୪", "5", "୫", "6", "୬", "7", "୭", "8", "୮", "9", "୯"
+  ];
+
+
+
+  const replaceSymbols = (text) => {
+    let modifiedSubstring = text;
+
+    if (modifiedSubstring !== '') {
+      for (let i = 0; i < array_one.length - 1; i += 2) {
+        let idx = 0;
+        while (idx !== -1) {
+          modifiedSubstring = modifiedSubstring.replace(
+            array_one[i],
+            array_one[i + 1]
+          );
+          idx = modifiedSubstring.indexOf(array_one[i]);
+        }
+      }
+
+      modifiedSubstring = modifiedSubstring.replace(
+        /([{])([କଖଗଘଙଚଛଜଝଞଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])/g,
+        '$2$1'
+      );
+      modifiedSubstring = modifiedSubstring.replace(
+        /([{])([୍])([କଖଗଘଙଚଛଜଝଞଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])/g,
+        '$2$3$1'
+      );
+      modifiedSubstring = modifiedSubstring.replace(
+        /([{])([୍])([କଖଗଘଙଚଛଜଝଞଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳବଶଷସହକ୍ଷଜ୍ଞୟ])/g,
+        '$2$3$1'
+      );
+      modifiedSubstring = modifiedSubstring.replace(/{ð/g, 'ୈ');
+      modifiedSubstring = modifiedSubstring.replace(/{ା/g, 'ୋ');
+      modifiedSubstring = modifiedSubstring.replace(/{ò/g, 'ୌ');
+      modifiedSubstring = modifiedSubstring.replace(/{/g, 'େ');
+      modifiedSubstring = modifiedSubstring.replace(
+        /([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳଵଶଷସହକ୍ଷଜ୍ଞୟ])([ାିୀୁୂୃେୈୋୌଂଁ]*)ö/g,
+        'ö$1$2'
+      );
+      modifiedSubstring = modifiedSubstring.replace(
+        /([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳଵଶଷସହକ୍ଷଜ୍ଞୟ])([୍])ö/g,
+        'ö$1$2'
+      );
+      modifiedSubstring = modifiedSubstring.replace(/ö/g, 'ର୍');
+      modifiedSubstring = modifiedSubstring.replace(
+        /([ଂଁ])([ାିୀୁୂୃେୈୋୌ])/g,
+        '$2$1'
+      );
+      modifiedSubstring = modifiedSubstring.replace(
+        /([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳଵଶଷସହକ୍ଷଜ୍ଞୟ])([ାିୀୁୂୃେୈୋୌଂଁ]*)}/g,
+        '}$1$2ି'
+      );
+      modifiedSubstring = modifiedSubstring.replace(
+        /([କଖଗଘଚଛଜଝଟଠଡଡ଼ଢଢ଼ଣତଥଦଧନପଫବଭମଯରଲଳଵଶଷସହକ୍ଷଜ୍ଞୟ])([୍])}/g,
+        '}$1$2'
+      );
+      modifiedSubstring = modifiedSubstring.replace(/}/g, 'ର୍');
+      modifiedSubstring = modifiedSubstring.replace(/ˆ/g, 'ତ୍ତ');
+    }
+
+    return modifiedSubstring;
+  };
+
+  const convertToUnicode = () => {
+    let modifiedSubstring = legacyText;
+    setUnicodeText('Conversion in progress...');
+
+    const textSize = modifiedSubstring.length;
+    let processedText = '';
+    let cond1 = 0;
+    let cond2 = 0;
+    let chaleChalo = 1;
+    const chunkSize = 6000;
+
+    while (chaleChalo === 1) {
+      cond1 = cond2;
+      if (cond2 < textSize - chunkSize) {
+        cond2 += chunkSize;
+      } else {
+        cond2 = textSize;
+        chaleChalo = 0;
+      }
+
+      modifiedSubstring = legacyText.substring(cond1, cond2);
+      modifiedSubstring = replaceSymbols(modifiedSubstring);
+
+      processedText += modifiedSubstring;
+      setUnicodeText(
+        `Conversion in progress...\n\nConversion of ${cond2} characters out of ${textSize} completed.`
+      );
+    }
+
+    setUnicodeText(processedText);
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Sreelipi to Unicode Converter</h1>
+      <textarea
+        id="legacy_text"
+        className="w-full h-400 p-2 border border-gray-300 rounded mb-4"
+        placeholder="Enter Sreelipi text here..."
+        value={legacyText}
+        onChange={(e) => setLegacyText(e.target.value)}
+        rows={20}
+        cols={70}
+      ></textarea>
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+        onClick={convertToUnicode}
+      >
+        Convert to Unicode
+      </button>
+      <textarea
+        id="unicode_text"
+        className="w-full h-400 p-2 border border-gray-300 rounded mt-4"
+        placeholder="Unicode text will appear here..."
+        value={unicodeText}
+        rows={20}
+        cols={70}
+      ></textarea>
+    </div>
+  );
+};
+
+export default SreelipiToUnicodeConverter;
+

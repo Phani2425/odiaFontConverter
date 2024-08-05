@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f8f8;
+    color: black;
+}
+
+header h1 {
+    font-size: 60px;
+}
+
+header p {
+    font-size: 18px;
+    padding: 0 255px;
+    color: #333;
+}
+
+.converter-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.converter-card {
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 385px;
+    height: 415px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap:15px;
+}
+
+
+.converter-card:hover {
+    background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+    color: #fff;
+}
+
+.converter-card:hover .icons {
+    color: white;
+}
+
+.about-section {
+    padding: 2rem;
+    background-color: #f8f8f8;
+}
+
+.about-slide {
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.about-slide h2 {
+    margin: 1rem 0;
+    font-size: 2rem;
+}
+
+.about-slide p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.cta-section {
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+    margin-top: 2rem;
+    background: url('./images/pattern-1.png');
+    background-size: cover;
+}
+
+.cta-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.cta-section h1 {
+    font-size: 75px;
+    color: white;
+    z-index: 10;
+    position: relative;
+}
+
+.cta-section h2,
+.cta-section button {
+    position: relative;
+    z-index: 2;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6f61;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+button:hover {
+    background-color: #de4313;
+}
+
+.cta-section button {
+    padding: 1.3rem 3.5rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+}
+
+.cta-section button:hover {
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+.faq-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.faq-section h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faq-item {
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    background: #f1f1f1;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.faq-question:hover {
+    background: #e2e2e2;
+}
+
+.faq-answer {
+    padding: 1rem 1.5rem;
+    color: #555;
+}
+
+#scroll-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: none; /* Hidden by default */
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode header {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+.dark-mode header p{
+    color: #fff;
+}
+
+.dark-mode .converter-card {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+.dark-mode .converter-card:hover {
+    background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+    color: #fff;
+}
+
+.dark-mode .about-section {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .about-slide p {
+    color: #ccc;
+}
+
+.dark-mode .cta-section::before {
+    background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+}
+
+.dark-mode .faq-section {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .faq-section h2 {
+    color: #fff;
+}
+
+.dark-mode .faq-item {
+    background: #2c2c2c;
+    border: 1px solid #444;
+}
+
+.dark-mode .faq-question {
+    background: #3c3c3c;
+    color: #fff;
+}
+
+.dark-mode .faq-question:hover {
+    background: #555;
+}
+
+.dark-mode .faq-answer {
+    color: #ddd;
+}
