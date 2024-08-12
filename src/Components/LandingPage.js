@@ -131,7 +131,7 @@ const LandingPage = ({ onConverterClick }) => {
                             },
                             {
                                 question: "What formats can I use?",
-                                answer: "Supports Akruti, Sreelipi, GIST, Apranta, Sambad, and ASCII."
+                                answer: "Supports Akruti, Sreelipi and Unicode."
                             }
                         ].map((faq, index) => (
                             <div key={index} className="faq-item">
