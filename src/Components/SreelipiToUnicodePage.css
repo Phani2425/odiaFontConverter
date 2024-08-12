@@ -54,13 +54,7 @@
   background-color: #007bff;
 }
 
-.button-convert-akruti {
-  background-color: #28a745;
-}
 
-.button-back {
-  background-color: #6c757d;
-}
 
 button:hover {
   opacity: 0.8;
