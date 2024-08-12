@@ -70,17 +70,12 @@ The application will be available at `http://localhost:3000`.
 
 - **/src**: Contains the source code for the application.
   - **components**: Reusable components like the input fields, buttons, and converters.
-  - **pages**: Main pages that handle the conversion logic.
   - **App.js**: The root component of the application.
   - **index.js**: The entry point of the application.
 
 ## Contributing
 
 Contributions are welcome! If you have any ideas or suggestions to improve the website, feel free to submit a pull request or open an issue.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## Acknowledgements
 
