@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FiLayers } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import { Link } from 'react-router-dom';
 
 const LandingPage = ({ onConverterClick }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -45,12 +46,13 @@ const LandingPage = ({ onConverterClick }) => {
     return (
         <div className={isDarkMode ? 'dark-mode' : ''}>
             <header>
-                <h1>Odia Unicode Converter</h1>
-                <p>Convert various Odia fonts to Unicode easily and accurately.</p>
+                <h1 class='text-gradient'>Odia Unicode Converter</h1>
+                <p class='text-gradient'>Convert various Odia fonts to Unicode easily and accurately.</p>
             </header>
 
             <main>
                 <section className="converter-section">
+                    <Link to={'/Unicode-and-akruti-converter'} style={{textDecoration:'none',color:'black'}}>
                     <div className="converter-card" onClick={() => onConverterClick('akrutiToUnicode')}>
                     <IconContext.Provider value={{ size:"3em",color: 'black', className: "icons" }}>
                 
@@ -60,7 +62,9 @@ const LandingPage = ({ onConverterClick }) => {
                     
                         <h2>ODIA AKRUTI TO UNICODE</h2>
                         <p>Convert text from legacy fonts to Unicode simply and quickly.</p>
-                    </div>
+                    </div></Link>
+
+                    <Link to={'/Unicode-and-akruti-converter'} style={{textDecoration:'none',color:'black'}}>
                     <div className="converter-card" onClick={() => onConverterClick('unicodeToAkruti')}>
                     <IconContext.Provider value={{ size:"3em",color: 'black', className: "icons" }}>
                 
@@ -70,6 +74,9 @@ const LandingPage = ({ onConverterClick }) => {
                         <h2>ODIA UNICODE TO AKRUTI</h2>
                         <p>Effortlessly convert Odia Unicode text to Akruti font.</p>
                     </div>
+                    </Link>
+                    
+                    <Link to={'/sreelipi-to-unicode'} style={{textDecoration:'none',color:'black'}}>
                     <div className="converter-card" onClick={() => onConverterClick('sreelipiToUnicode')}>
                         <IconContext.Provider value={{ size:"3em", color: 'black', className: "icons" }}>
                             <FiLayers />
@@ -77,6 +84,8 @@ const LandingPage = ({ onConverterClick }) => {
                         <h2>SREELIPI TO UNICODE CONVERTER</h2>
                         <p>Convert Sreelipi text to Unicode accurately and easily.</p>
                     </div>
+                    </Link>
+
                 </section>
 
                 <section className="about-section">

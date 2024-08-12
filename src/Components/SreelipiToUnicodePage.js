@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './SreelipiToUnicodePage.css';
-// import mammoth from 'mammoth';
-import * as pdfjsLib from 'pdfjs-dist';
-// import WordExtractor from 'word-extractor';
+import Navbar from './navbar';
 
 const SreelipiToUnicodeConverter = () => {
   const [legacyText, setLegacyText] = useState('');
@@ -127,56 +125,6 @@ const SreelipiToUnicodeConverter = () => {
     setConversionHistory([...conversionHistory, { input: legacyText, output: processedText }]);
   };
 
-  const handleFileUpload = async (event) => {
-    const uploadedFile = event.target.files[0];
-    const fileType = uploadedFile.type;
-
-    if (uploadedFile && fileType === 'text/plain') {
-      // Handling text files (.txt)
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const text = e.target.result;
-        setLegacyText(text);
-      };
-      reader.readAsText(uploadedFile);
-    } 
-    // else if (uploadedFile && fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-    //   // Handling Word files (.docx) using word-extractor
-    //   const fileReader = new FileReader();
-
-    //   fileReader.onload = async (e) => {
-    //     const buffer = e.target.result;
-    //     const extractor = new WordExtractor();
-    //     try {
-    //       const doc = await extractor.extract(buffer);
-    //       const text = doc.getBody();
-    //       setLegacyText(text);
-    //     } catch (error) {
-    //       console.error('Error extracting text from Word document:', error);
-    //       alert('Failed to extract text from the Word document.');
-    //     }
-    //   };
-
-    //   fileReader.readAsArrayBuffer(uploadedFile);
-    // } 
-    else if (uploadedFile && fileType === 'application/pdf') {
-      // Handling PDF files (.pdf)
-      const pdf = await pdfjsLib.getDocument(URL.createObjectURL(uploadedFile)).promise;
-      let extractedText = '';
-
-      for (let i = 0; i < pdf.numPages; i++) {
-        const page = await pdf.getPage(i + 1);
-        const textContent = await page.getTextContent();
-        const pageText = textContent.items.map(item => item.str).join(' ');
-        extractedText += pageText + '\n';
-      }
-
-      setLegacyText(extractedText);
-    } 
-    else {
-      alert('Please upload a .txt, .docx, or .pdf file.');
-    }
-  };
 
   const handleOutputChange = (event) => {
     setUnicodeText(event.target.value);
@@ -195,18 +143,10 @@ const SreelipiToUnicodeConverter = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="container">
       <h1 className="header">Sreelipi to Unicode Converter</h1>
-
-      <div className="file-upload-container">
-        <input
-          type="file"
-          accept=".txt,.docx,.pdf"
-          onChange={handleFileUpload}
-          className="file-upload"
-        />
-        <p>Or enter text below:</p>
-      </div>
 
       <div className="textarea-container">
         <textarea
@@ -236,28 +176,26 @@ const SreelipiToUnicodeConverter = () => {
         </button>
 
         <button
-          onClick={copyToClipboard}
-          className="button-copy"
-        >
-          Copy Output
-        </button>
-
-        <button
           onClick={removeLineBreaks}
           className="button-remove-linebreaks"
         >
           Remove Line Breaks
         </button>
 
+        <button
+          onClick={copyToClipboard}
+          className="button-copy"
+        >
+          Copy Output
+        </button>
+
         <button onClick={showConversionHistory} className="button-history">
           Show Conversion History
         </button>
 
-        <button onClick={() => { window.location.href = '/'; }} className="button-home">
-          Go back to Home
-        </button>
       </div>
     </div>
+    </>
   );
 };
 

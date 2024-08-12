@@ -1,17 +1,19 @@
 // ConverterPage.js
 import React, { useState } from 'react';
 import './ConverterPage.css'; // Your styles
+import Navbar from './navbar';
+import Modal from './Modal';
 
 // Maps for conversion
 const oneCharMap = {
   "୦": "0", "୧": "1", "୨": "2", "୩": "3", "୪": "4", "୫": "5", "୬": "6", "୭": "7", "୮": "8", "୯": "9",
-  "୰": "#", "ଽ": "$", "ଌ": "&", "ଡ଼": "Wÿ", "ଢ଼": "Xÿ", "ଥି": "[ô", "ଧି": "]ô", "ଜ୍ଞ": "m", "ଅ": "@", 
-  "ଇ": "A", "ଈ": "B", "ଉ": "C", "ଊ": "D", "ଋ": "E", "ୠ": "F", "ଏ": "G", "ଐ": "H", "ଓ": "I", "ଔ": "J", 
-  "କ": "K", "ଖ": "L", "ଗ": "M", "ଘ": "N", "ଙ": "O", "ଚ": "P", "ଛ": "Q", "ଜ": "R", "ଝ": "S", "ଞ": "T", 
-  "ଟ": "U", "ଠ": "V", "ଡ": "W", "ଢ": "X", "ଣ": "Y", "ତ": "Z", "ଥ": "[", "ଦ": "\\", "ଧ": "]", "ନ": "^", 
-  "ପ": "_", "ଫ": "`", "ବ": "a", "ଭ": "b", "ମ": "c", "ଯ": "~", "ୟ": "d", "ର": "e", "ଲ": "f", "ଶ": "g", 
-  "ଷ": "h", "ସ": "i", "ହ": "j", "ଳ": "k", "ା": "û", "ି": "ò", "ୀ": "ú", "ୁ": "ê", "ୂ": "í", "ୃ": "é", 
-  "ଃ": "ü", "େ": "ù", "ଁ": "ñ", "ଂ": "õ", "୍": "þ", "।": "û", "ୗ": "ø", "ୌ": "ùø", "ୖ": "÷", "ୈ": "ù÷", 
+  "୰": "#", "ଽ": "$", "ଌ": "&", "ଡ଼": "Wÿ", "ଢ଼": "Xÿ", "ଥି": "[ô", "ଧି": "]ô", "ଜ୍ଞ": "m", "ଅ": "@",
+  "ଇ": "A", "ଈ": "B", "ଉ": "C", "ଊ": "D", "ଋ": "E", "ୠ": "F", "ଏ": "G", "ଐ": "H", "ଓ": "I", "ଔ": "J",
+  "କ": "K", "ଖ": "L", "ଗ": "M", "ଘ": "N", "ଙ": "O", "ଚ": "P", "ଛ": "Q", "ଜ": "R", "ଝ": "S", "ଞ": "T",
+  "ଟ": "U", "ଠ": "V", "ଡ": "W", "ଢ": "X", "ଣ": "Y", "ତ": "Z", "ଥ": "[", "ଦ": "\\", "ଧ": "]", "ନ": "^",
+  "ପ": "_", "ଫ": "`", "ବ": "a", "ଭ": "b", "ମ": "c", "ଯ": "~", "ୟ": "d", "ର": "e", "ଲ": "f", "ଶ": "g",
+  "ଷ": "h", "ସ": "i", "ହ": "j", "ଳ": "k", "ା": "û", "ି": "ò", "ୀ": "ú", "ୁ": "ê", "ୂ": "í", "ୃ": "é",
+  "ଃ": "ü", "େ": "ù", "ଁ": "ñ", "ଂ": "õ", "୍": "þ", "।": "û", "ୗ": "ø", "ୌ": "ùø", "ୖ": "÷", "ୈ": "ù÷",
   "ୋ": "ùା", "ଆ": "@û",
 };
 
@@ -20,8 +22,8 @@ const halantThreeCharMap = {
 };
 
 const halantTwoCharMap = {
-  "୍କ": "Ñ", "୍ଖ": "Ò", "୍ଗ": "Ó", "୍ଚ": "Ô", "୍ଜ": "Õ", "୍ଝ": "Ö", "୍ଠ": "×", "୍ଡ": "Ø", "୍ଣ": "Ù", 
-  "୍ଥ": "Ú", "୍ଧ": "Û", "୍ନ": "Ü", "୍ପ": "Ý", "୍ଫ": "Þ", "୍ୱ": "ß", "୍ମ": "£", "୍ର": "â", "୍ଲ": "ä", 
+  "୍କ": "Ñ", "୍ଖ": "Ò", "୍ଗ": "Ó", "୍ଚ": "Ô", "୍ଜ": "Õ", "୍ଝ": "Ö", "୍ଠ": "×", "୍ଡ": "Ø", "୍ଣ": "Ù",
+  "୍ଥ": "Ú", "୍ଧ": "Û", "୍ନ": "Ü", "୍ପ": "Ý", "୍ଫ": "Þ", "୍ୱ": "ß", "୍ମ": "£", "୍ର": "â", "୍ଲ": "ä",
   "୍ଭ": "å", "୍ଳ": "æ", "୍ସ": "ç", "୍ୟ": "è"
 };
 
@@ -155,6 +157,8 @@ const ConverterPage = ({ conversionType }) => {
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const [conversionHistory, setConversionHistory] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(outputText);
@@ -230,102 +234,100 @@ const ConverterPage = ({ conversionType }) => {
     } else if (conversionType === 'unicodeToAkruti') {
       convertedText = unicodeToAkruti(inputText);
     }
-    
     setOutputText(convertedText);
-    setConversionHistory([...conversionHistory, { input: inputText, output: convertedText }]);
+
+    // Save to local storage
+    const historyKey = `${conversionType}_history`;
+    const currentHistory = JSON.parse(localStorage.getItem(historyKey)) || [];
+    const newEntry = { raw: inputText, converted: convertedText };
+    const updatedHistory = [...currentHistory, newEntry];
+    localStorage.setItem(historyKey, JSON.stringify(updatedHistory));
+
+    setConversionHistory(updatedHistory);
   };
 
   const handleOutputChange = (event) => {
     setOutputText(event.target.value);
   };
 
-  const handleFileUpload = (event) => {
-    const uploadedFile = event.target.files[0];
-    if (uploadedFile && uploadedFile.type === 'text/plain') {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const text = e.target.result;
-        setInputText(text);
-      };
-      reader.readAsText(uploadedFile);
-    } else {
-      alert('Please upload a .txt file.');
-    }
-  };
 
   const showConversionHistory = () => {
-    alert(conversionHistory.map(entry => `Input: ${entry.input}\nOutput: ${entry.output}`).join('\n\n'));
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   return (
-    <div className="container">
-      <h1 className="header">
-        {conversionType === 'akrutiToUnicode' ? 'Akruti to Unicode Converter' : 'Unicode to Akruti Converter'}
-      </h1>
+    <div class='top'>
+      <Navbar />
+      <div className="container">
+        <h1 className="header">
+          {conversionType === 'akrutiToUnicode' ? 'Akruti to Unicode Converter' : 'Unicode to Akruti Converter'}
+        </h1>
 
-      <div className="file-upload-container">
-        <input
-          type="file"
-          accept=".txt"
-          onChange={handleFileUpload}
-          className="file-upload"
-        />
-        <p>Or enter text below:</p>
+        <div className="textarea-container">
+          <textarea
+            className="textarea"
+            placeholder="Input text here..."
+            value={inputText}
+            onChange={handleInputChange}
+          />
+
+          <textarea
+            className="textarea"
+            placeholder="Converted text..."
+            value={outputText}
+            onChange={handleOutputChange}
+          />
+        </div>
+
+        <div className="buttons-container">
+          {conversionType === 'akrutiToUnicode' ? (<button
+            className="button button-convert-unicode"
+            onClick={handleConvert}
+          >
+            Convert to Unicode
+          </button>) : (<button
+            className="button button-convert-akruti"
+            onClick={handleConvert}
+          >
+            Convert to Akruti
+          </button>)}
+
+          <button
+            onClick={removeLineBreaks}
+            className="button-remove-linebreaks"
+          >
+            Remove Line Breaks
+          </button>
+
+
+          <button
+            onClick={copyToClipboard}
+            className="button-copy"
+          >
+            Copy Output
+          </button>
+
+          <button onClick={showConversionHistory} className="button-history">
+            Show Conversion History
+          </button>
+
+        </div>
       </div>
-
-      <div className="textarea-container">
-        <textarea
-          className="textarea"
-          placeholder="Input text here..."
-          value={inputText}
-          onChange={handleInputChange}
-        />
-
-        <textarea
-          className="textarea"
-          placeholder="Converted text..."
-          value={outputText}
-          onChange={handleOutputChange}
-        />
-      </div>
-
-      <div className="buttons-container">
-        <button
-          className="button button-convert-unicode"
-          onClick={handleConvert}
-        >
-          Convert to Unicode
-        </button>
-        <button
-          className="button button-convert-akruti"
-          onClick={handleConvert}
-        >
-          Convert to Akruti
-        </button>
-        
-        <button
-          onClick={copyToClipboard}
-          className="button-copy"
-        >
-          Copy Output
-        </button>
-        <button
-          onClick={removeLineBreaks}
-          className="button-remove-linebreaks"
-        >
-          Remove Line Breaks
-        </button>
-
-        <button onClick={showConversionHistory} className="button-history">
-          Show Conversion History
-        </button>
-
-        <button onClick={() => { window.location.href = '/'; }} className="button-home">
-          Go back to Home
-        </button>
+      <div class='modal-container'>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        history={conversionHistory}
+      />
       </div>
     </div>
   );
 };
 
 export default ConverterPage;
+
+

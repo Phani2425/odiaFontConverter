@@ -1,68 +1,100 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .header {
-    font-size: 34px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .textarea-container {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .textarea {
-    width: 30vw;
-    height: 40vh;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 4%;
-  }
-  
-  .textarea:last-child {
-    margin-right: 0;
-  }
-  
-  .buttons-container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .buttons-container button{
-    margin-bottom: 10px;
-  }
-  .button {
-    padding: 10px 20px;
-    margin: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .button-convert-unicode {
-    background-color: #007bff;
-  }
-  
-  .button-convert-akruti {
-    background-color: #28a745;
-  }
-  
-  .button-back {
-    background-color: #6c757d;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.textarea-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.textarea {
+  width: 30vw;
+  height: 40vh;
+  padding: 10px;
+  border:8px solid rgb(0, 166, 255);
+  border-radius: 10px;
+  margin-right: 4%;
+
+}
+
+
+.textarea:last-child {
+  margin-right: 0;
+}
+
+.buttons-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.buttons-container button{
+  margin-bottom: 10px;
+}
+.button {
+  padding: 12px 24px;
+  margin: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button-convert-unicode {
+  background-color: #007bff;
+}
+
+.button-convert-akruti {
+  background-color: #007bff;
+}
+
+.button-remove-linebreaks{
+  background-color: #007bff;
+}
+
+.button-copy{
+  background-color: #007bff;
+}
+
+.button-history{
+  background-color: #007bff;
+}
+
+.button-back {
+  background-color: #007bff;
+}
+
+button:hover {
+  opacity: 0.8;
+  background-color: #007bff;
+  transform: scale(0.95);
+  transition: all 0.2s;
+}
+
+.top{
+  position: relative;
+}
+
+.modal-container{
+  position: absolute;
+  top: 10%;
+  height: auto;
+  width:100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+}

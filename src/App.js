@@ -1,30 +1,27 @@
 // App.js
 import React, { useState } from 'react';
 import './App.css';
+import { Routes,Route } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 import ConverterPage from './Components/ConverterPage';
 import SreelipiToUnicodePage from './Components/SreelipiToUnicodePage'; // Import the new component
 
+
+
 const App = () => {
-    const [showConverter, setShowConverter] = useState(false);
     const [conversionType, setConversionType] = useState('');
 
     const handleConverterClick = (type) => {
         setConversionType(type);
-        setShowConverter(true);
     };
 
     return (
-        <div className="App">
-            {!showConverter ? (
-                <LandingPage onConverterClick={handleConverterClick} />
-            ) : (
-                conversionType === 'sreelipiToUnicode' ? (
-                    <SreelipiToUnicodePage />
-                ) : (
-                    <ConverterPage conversionType={conversionType} />
-                )
-            )}
+        <div>
+            <Routes>
+                <Route exact path="/" element={<LandingPage onConverterClick={handleConverterClick} />} />
+                <Route exact path="/Unicode-and-akruti-converter" element={<ConverterPage conversionType={conversionType} />} />
+                <Route exact path="/sreelipi-to-unicode" element={<SreelipiToUnicodePage />} />
+            </Routes>
         </div>
     );
 };
