@@ -1,7 +1,6 @@
 // ConverterPage.js
 import React, { useState } from 'react';
 import './ConverterPage.css'; // Your styles
-import Navbar from './navbar';
 import Modal from './Modal';
 
 // Maps for conversion
@@ -259,9 +258,13 @@ const ConverterPage = ({ conversionType }) => {
     setModalOpen(false);
   };
 
+  const clearInput = () => {
+    setInputText('');
+    setOutputText('');
+  };
+
   return (
     <div class='top'>
-      <Navbar />
       <div className="container">
         <h1 className="header">
           {conversionType === 'akrutiToUnicode' ? 'Akruti to Unicode Converter' : 'Unicode to Akruti Converter'}
@@ -295,6 +298,13 @@ const ConverterPage = ({ conversionType }) => {
           >
             Convert to Akruti
           </button>)}
+
+          <button
+            onClick={clearInput}
+            className="button-clear-input"
+          >
+            Clear Input
+          </button>
 
           <button
             onClick={removeLineBreaks}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './SreelipiToUnicodePage.css';
-import Navbar from './navbar';
 
 const SreelipiToUnicodeConverter = () => {
   const [legacyText, setLegacyText] = useState('');
@@ -142,9 +141,13 @@ const SreelipiToUnicodeConverter = () => {
     alert(conversionHistory.map(entry => `Input: ${entry.input}\nOutput: ${entry.output}`).join('\n\n'));
   };
 
+  const clearInput = () => {
+    setLegacyText('');
+    setUnicodeText('');
+  }
+
   return (
     <>
-    <Navbar/>
     <div className="container">
       <h1 className="header">Sreelipi to Unicode Converter</h1>
 
@@ -174,6 +177,13 @@ const SreelipiToUnicodeConverter = () => {
         <button className="button button-convert-unicode" onClick={convertToUnicode}>
           Convert to Unicode
         </button>
+
+        <button
+            onClick={clearInput}
+            className="button-clear-input"
+          >
+            Clear Input
+          </button>
 
         <button
           onClick={removeLineBreaks}

@@ -4,17 +4,27 @@ import Slider from 'react-slick';
 import './LandingPage.css';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { IoIosArrowUp } from "react-icons/io";
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FiLayers } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { Link } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip'
+import FlashScreen from './FlashScreen';
+import {motion} from 'framer-motion';
 
 const LandingPage = ({ onConverterClick }) => {
+    
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [activeFAQ, setActiveFAQ] = useState(null);
+    const [showFlashScreen, setShowFlashScreen] = useState(true);
+
+    const handleFlashScreenFinish = () => {
+        setShowFlashScreen(false);
+    };
 
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
@@ -42,9 +52,18 @@ const LandingPage = ({ onConverterClick }) => {
         autoplay: true,
         autoplaySpeed: 3000,
     };
+    
 
     return (
         <div className={isDarkMode ? 'dark-mode' : ''}>
+                        {showFlashScreen ? (
+                <FlashScreen onFinished={handleFlashScreenFinish} />
+            ) : (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                ></motion.div>)}
             <header>
                 <h1 class='text-gradient'>Odia Unicode Converter</h1>
                 <p class='text-gradient'>Convert various Odia fonts to Unicode easily and accurately.</p>
@@ -52,38 +71,38 @@ const LandingPage = ({ onConverterClick }) => {
 
             <main>
                 <section className="converter-section">
-                    <Link to={'/Unicode-and-akruti-converter'} style={{textDecoration:'none',color:'black'}}>
-                    <div className="converter-card" onClick={() => onConverterClick('akrutiToUnicode')}>
-                    <IconContext.Provider value={{ size:"3em",color: 'black', className: "icons" }}>
-                
-                   <FiLayers />
-                  
-                    </IconContext.Provider>
-                    
-                        <h2>ODIA AKRUTI TO UNICODE</h2>
-                        <p>Convert text from legacy fonts to Unicode simply and quickly.</p>
-                    </div></Link>
+                    <Link to={'/unicode-and-akruti-converter'} style={{ textDecoration: 'none', color: 'black' }} data-tooltip-id="my-tooltip" data-tooltip-content="Converts traditional Odia Akruti script to Unicode.">
+                        <div className="converter-card" onClick={() => onConverterClick('akrutiToUnicode')}>
+                            <IconContext.Provider value={{ size: "3em", color: 'black', className: "icons" }}>
 
-                    <Link to={'/Unicode-and-akruti-converter'} style={{textDecoration:'none',color:'black'}}>
-                    <div className="converter-card" onClick={() => onConverterClick('unicodeToAkruti')}>
-                    <IconContext.Provider value={{ size:"3em",color: 'black', className: "icons" }}>
-                
-                   <FiLayers />
-                  
-                    </IconContext.Provider>
-                        <h2>ODIA UNICODE TO AKRUTI</h2>
-                        <p>Effortlessly convert Odia Unicode text to Akruti font.</p>
-                    </div>
+                                <FiLayers />
+
+                            </IconContext.Provider>
+
+                            <h2>ODIA AKRUTI TO UNICODE</h2>
+                            <p>Convert text from legacy fonts to Unicode simply and quickly.</p>
+                        </div></Link>
+
+                    <Link to={'/unicode-and-akruti-converter'} style={{ textDecoration: 'none', color: 'black' }} data-tooltip-id="my-tooltip" data-tooltip-content= "Converts Unicode Odia text back to Akruti script.">
+                        <div className="converter-card" onClick={() => onConverterClick('unicodeToAkruti')}>
+                            <IconContext.Provider value={{ size: "3em", color: 'black', className: "icons" }}>
+
+                                <FiLayers />
+
+                            </IconContext.Provider>
+                            <h2>ODIA UNICODE TO AKRUTI</h2>
+                            <p>Effortlessly convert Odia Unicode text to Akruti font.</p>
+                        </div>
                     </Link>
-                    
-                    <Link to={'/sreelipi-to-unicode'} style={{textDecoration:'none',color:'black'}}>
-                    <div className="converter-card" onClick={() => onConverterClick('sreelipiToUnicode')}>
-                        <IconContext.Provider value={{ size:"3em", color: 'black', className: "icons" }}>
-                            <FiLayers />
-                        </IconContext.Provider>
-                        <h2>SREELIPI TO UNICODE CONVERTER</h2>
-                        <p>Convert Sreelipi text to Unicode accurately and easily.</p>
-                    </div>
+
+                    <Link to={'/sreelipi-to-unicode'} style={{ textDecoration: 'none', color: 'black' }} data-tooltip-id="my-tooltip" data-tooltip-content="Translates Sreelipi script to Unicode for wider compatibility.">
+                        <div className="converter-card" onClick={() => onConverterClick('sreelipiToUnicode')}>
+                            <IconContext.Provider value={{ size: "3em", color: 'black', className: "icons" }}>
+                                <FiLayers />
+                            </IconContext.Provider>
+                            <h2>SREELIPI TO UNICODE CONVERTER</h2>
+                            <p>Convert Sreelipi text to Unicode accurately and easily.</p>
+                        </div>
                     </Link>
 
                 </section>
@@ -104,6 +123,7 @@ const LandingPage = ({ onConverterClick }) => {
                         </div>
                     </Slider>
                 </section>
+
 
                 <section className="faq-section">
                     <h2>Frequently Asked Questions</h2>
@@ -136,8 +156,8 @@ const LandingPage = ({ onConverterClick }) => {
                         ].map((faq, index) => (
                             <div key={index} className="faq-item">
                                 <div className="faq-question" onClick={() => toggleFAQ(index)}>
-                                    <h3>{faq.question}</h3>
-                                    <span>{activeFAQ === index ? '-' : '+'}</span>
+                                    <h3 >{faq.question}</h3>
+                                    <span>{activeFAQ === index ? (<FaChevronUp/>) : (<FaChevronDown/>)}</span>
                                 </div>
                                 {activeFAQ === index && (
                                     <div className="faq-answer">
@@ -150,20 +170,22 @@ const LandingPage = ({ onConverterClick }) => {
                 </section>
 
                 <section className="cta-section">
-                    <h2>READY TO DO THIS</h2>
-                    <h1>Let's get to work</h1>
+                    <h1>Partner with Us</h1>
                     <button>Contact Us</button>
                 </section>
+
             </main>
 
             <button id="mode-toggle" className="bottom-left" onClick={toggleDarkMode}>
-                {isDarkMode ? <FaSun size={20}/> : <FaMoon  size={20}/>}
+                {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
             </button>
             {showScrollTop && (
                 <button id="scroll-top" className="bottom-right" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     <IoIosArrowUp />
                 </button>
             )}
+
+       <Tooltip id="my-tooltip" />  
         </div>
     );
 };

@@ -53,27 +53,31 @@
 }
 
 .button-convert-unicode {
-  background-color: #007bff;
+  background-color: #007bff; /* Blue */
 }
 
 .button-convert-akruti {
-  background-color: #007bff;
+  background-color: #28a745; /* Green */
 }
 
-.button-remove-linebreaks{
-  background-color: #007bff;
+.button-remove-linebreaks {
+  background-color: #ffc107; /* Yellow */
 }
 
-.button-copy{
-  background-color: #007bff;
+.button-copy {
+  background-color: #17a2b8; /* Teal */
 }
 
-.button-history{
-  background-color: #007bff;
+.button-history {
+  background-color: #fd7e14; /* Orange */
 }
 
 .button-back {
-  background-color: #007bff;
+  background-color: #6f42c1; /* Purple */
+}
+
+.button-clear-input{
+  background-color: #f8312f; /* Red */
 }
 
 button:hover {

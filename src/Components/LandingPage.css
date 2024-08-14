@@ -19,12 +19,14 @@ header {
 
 header h1 {
   font-size: 60px;
+  color: #f31713;
 }
 
 header p {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 500;
   padding: 0 255px;
-  color: #333;
+  color: #ee074c;
 }
 
 .converter-section {
@@ -54,6 +56,12 @@ header p {
   gap: 15px;
 }
 
+/* .converter-card h2{
+  color: #f04643;
+} */
+
+
+
 .converter-card:hover {
   border-radius: 10px; /* Optional: add rounded corners */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
@@ -67,7 +75,7 @@ header p {
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: linear-gradient(
     145deg,
-    #f81f01 0%,
+    #f81f01 1%,
     #ee076e 100%
   ); /* Example gradient */
   -webkit-background-clip: text;
@@ -126,6 +134,12 @@ header p {
   color: white;
   z-index: 10;
   position: relative;
+}
+
+.cta-section p{
+  color: white;
+  font-size: large;
+  z-index: 10;
 }
 
 .cta-section h2,
@@ -213,6 +227,7 @@ button:hover {
   color: #333;
   background: #f1f1f1;
   border-bottom: 1px solid #e2e2e2;
+  user-select: none;
 }
 
 .faq-question:hover {
@@ -222,6 +237,7 @@ button:hover {
 .faq-answer {
   padding: 1rem 1.5rem;
   color: #555;
+  user-select: none;
 }
 
 #scroll-top {
@@ -302,3 +318,15 @@ button:hover {
 .dark-mode .faq-answer {
   color: #ddd;
 }
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+header h1, header p {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+
