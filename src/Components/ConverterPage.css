@@ -50,6 +50,7 @@
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
+  width: fit-content;
 }
 
 .button-convert-unicode {
