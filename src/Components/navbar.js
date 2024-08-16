@@ -22,7 +22,8 @@ const Navbar = ({ onConverterClick }) => {
             <FaChevronDown className="dropdown-icon" />
           </Link>
           <div className="dropdown-content">
-            <Link to="/text-process" className="dropdown-item">Remove Line Brakes</Link>
+            <Link to="/text-process" className="dropdown-item">Remove Line Break</Link>
+            <Link to="/text-editor" className="dropdown-item">Text Editor</Link>
           </div>
         </div>
       </div>

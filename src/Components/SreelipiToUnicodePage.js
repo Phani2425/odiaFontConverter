@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SreelipiToUnicodePage.css';
+import toast from 'react-hot-toast';
 
 const SreelipiToUnicodeConverter = () => {
   const [legacyText, setLegacyText] = useState('');
@@ -92,6 +93,12 @@ const SreelipiToUnicodeConverter = () => {
   };
 
   const convertToUnicode = () => {
+    if(legacyText === ''){
+      toast('Please enter the required input', {
+        icon: '✏️',
+    });
+    return;
+    }
     let modifiedSubstring = legacyText;
     setUnicodeText('Conversion in progress...');
 
@@ -121,6 +128,7 @@ const SreelipiToUnicodeConverter = () => {
     }
 
     setUnicodeText(processedText);
+    toast.success('Conversion Successfull');
     setConversionHistory([...conversionHistory, { input: legacyText, output: processedText }]);
   };
 
@@ -130,10 +138,12 @@ const SreelipiToUnicodeConverter = () => {
   };
 
   const copyToClipboard = () => {
+    toast.success('Copied');
     navigator.clipboard.writeText(unicodeText);
   };
 
   const removeLineBreaks = () => {
+    toast.success('Removed');
     setUnicodeText(unicodeText.replace(/\n/g, ' '));
   };
 

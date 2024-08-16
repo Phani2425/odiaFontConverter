@@ -170,8 +170,7 @@ const LandingPage = ({ onConverterClick }) => {
                 </section>
 
                 <section className="cta-section">
-                    <h1>Partner with Us</h1>
-                    <button>Contact Us</button>
+                    <button id='cta-button'>Contact Us</button>
                 </section>
 
             </main>

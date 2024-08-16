@@ -1,7 +1,9 @@
 // ConverterPage.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ConverterPage.css'; // Your styles
 import Modal from './Modal';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 // Maps for conversion
 const oneCharMap = {
@@ -157,13 +159,21 @@ const ConverterPage = ({ conversionType }) => {
   const [outputText, setOutputText] = useState('');
   const [conversionHistory, setConversionHistory] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+     setInputText('');
+     setOutputText('');
+  },[conversionType])
 
 
   const copyToClipboard = () => {
+    toast.success('Copied');
     navigator.clipboard.writeText(outputText);
   };
 
   const removeLineBreaks = () => {
+    toast.success('Removed');
     setOutputText(outputText.replace(/\n/g, ' '));
   };
 
@@ -228,12 +238,19 @@ const ConverterPage = ({ conversionType }) => {
 
   const handleConvert = () => {
     let convertedText = '';
+    if(inputText === ''){
+      toast('Please enter the required input', {
+        icon: '✏️',
+    });
+    return;
+    }
     if (conversionType === 'akrutiToUnicode') {
       convertedText = akrutiToUnicode(inputText);
     } else if (conversionType === 'unicodeToAkruti') {
       convertedText = unicodeToAkruti(inputText);
     }
     setOutputText(convertedText);
+    toast.success('Conversion Successful');
 
     // Save to local storage
     const historyKey = `${conversionType}_history`;
@@ -262,6 +279,10 @@ const ConverterPage = ({ conversionType }) => {
     setInputText('');
     setOutputText('');
   };
+
+  const openTextEditor = () => {
+    navigate('/text-editor', { state: { text: outputText } });
+};
 
   return (
     <div class='top'>
@@ -321,6 +342,8 @@ const ConverterPage = ({ conversionType }) => {
             Copy Output
           </button>
 
+          <button onClick={openTextEditor} className="button-open-editor">Open in Text Editor</button>
+
           <button onClick={showConversionHistory} className="button-history">
             Show Conversion History
           </button>
@@ -328,11 +351,11 @@ const ConverterPage = ({ conversionType }) => {
         </div>
       </div>
       <div class='modal-container'>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        history={conversionHistory}
-      />
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          history={conversionHistory}
+        />
       </div>
     </div>
   );

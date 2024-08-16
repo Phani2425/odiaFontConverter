@@ -22,7 +22,7 @@
 }
 
 .textarea {
-  width: 30vw;
+  width: 60vw;
   height: 40vh;
   padding: 10px;
   border:8px solid rgb(0, 166, 255);
@@ -79,6 +79,10 @@
 
 .button-clear-input{
   background-color: #f8312f; /* Red */
+}
+
+.button-open-editor{
+  background-color:crimson; /* Dark Gray */
 }
 
 button:hover {

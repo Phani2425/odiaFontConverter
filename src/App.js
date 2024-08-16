@@ -7,6 +7,8 @@ import ConverterPage from './Components/ConverterPage';
 import SreelipiToUnicodePage from './Components/SreelipiToUnicodePage'; // Import the new component
 import OdiaTextProcessor from './Components/TextProcessor'
 import Navbar from './Components/navbar'; // Import the new component
+import TextEditor from './Components/TextEditor'; // Import the new component
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -25,7 +27,9 @@ const App = () => {
                 <Route exact path="/unicode-and-akruti-converter" element={<ConverterPage conversionType={conversionType} />} />
                 <Route exact path="/sreelipi-to-unicode" element={<SreelipiToUnicodePage />} />
                 <Route exact path='/text-process' element={<OdiaTextProcessor/>} />
+                <Route path="/text-editor" element={<TextEditor />} />
             </Routes>
+            <Toaster/>
         </div>
     );
 };

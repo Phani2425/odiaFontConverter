@@ -19,14 +19,14 @@ header {
 
 header h1 {
   font-size: 60px;
-  color: #f31713;
+  color: #f31713d7;
 }
 
 header p {
   font-size: 20px;
   font-weight: 500;
   padding: 0 255px;
-  color: #ee074c;
+  color: #f31713bb;
 }
 
 .converter-section {
@@ -148,24 +148,27 @@ header p {
   z-index: 2;
 }
 
-button {
+#mode-toggle {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 5px;
-  background-color:  #d91d65;
+  background-color:  #f31313ea;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
   z-index: 10;
   font: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-button:hover {
-    background-color:  #d91d65;
+#mode-toggle:hover {
+    background-color:  #ec1111;
     opacity: 0.8;
 }
 
-.cta-section button {
+#cta-button{
   padding: 1.3rem 3.5rem;
   border: 2px solid white;
   border-radius: 5px;
@@ -178,8 +181,8 @@ button:hover {
   margin-bottom: 4rem;
 }
 
-.cta-section button:hover {
-  transform: scale(1.1);
+#cta-button:hover {
+  transform: scale(0.9);
   transition: all 0.3s;
 }
 
