@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './SreelipiToUnicodePage.css';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import Modal from './Modal';
 
 const SreelipiToUnicodeConverter = () => {
   const [legacyText, setLegacyText] = useState('');
   const [unicodeText, setUnicodeText] = useState('');
   const [conversionHistory, setConversionHistory] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const array_one = [
     ">", " ।", "ÿ", "", "􀃛", "", "ç§", "§ç", "􀁞", "{", "{ç ", "ç{", "{ç", "ç{", "ôæ", "æô", " {# ", "#{", "{#", "#{",
@@ -129,7 +133,18 @@ const SreelipiToUnicodeConverter = () => {
 
     setUnicodeText(processedText);
     toast.success('Conversion Successfull');
-    setConversionHistory([...conversionHistory, { input: legacyText, output: processedText }]);
+     // Save to local storage
+     const historyKey = `sreelipiToUnicode_history`;
+     const currentHistory = JSON.parse(localStorage.getItem(historyKey)) || [];
+     const newEntry = {
+       date: new Date().toISOString(), // Use ISO format for consistency
+       raw: legacyText,
+       converted: unicodeText
+     };
+     const updatedHistory = [...currentHistory, newEntry];
+     localStorage.setItem(historyKey, JSON.stringify(updatedHistory));
+ 
+     setConversionHistory(updatedHistory);
   };
 
 
@@ -144,17 +159,41 @@ const SreelipiToUnicodeConverter = () => {
 
   const removeLineBreaks = () => {
     toast.success('Removed');
-    setUnicodeText(unicodeText.replace(/\n/g, ' '));
+
+    let result = unicodeText.replace(/\n+/g, (match) => {
+      if (match === '\n\n') {
+          return '\n';  // Replace double newline with single newline
+      } else {
+          return ' ';   // Replace single newline with space
+      }
+  });
+    setUnicodeText(result);
   };
 
+
   const showConversionHistory = () => {
-    alert(conversionHistory.map(entry => `Input: ${entry.input}\nOutput: ${entry.output}`).join('\n\n'));
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const clearHistory = () => {
+    const historyKey = `sreelipiToUnicode_history`;
+    localStorage.removeItem(historyKey);
+    setConversionHistory([]);
+    toast.success('History cleared');
   };
 
   const clearInput = () => {
     setLegacyText('');
     setUnicodeText('');
   }
+
+  const openTextEditor = () => {
+    navigate('/text-editor', { state: { text: unicodeText } });
+};
 
   return (
     <>
@@ -202,6 +241,8 @@ const SreelipiToUnicodeConverter = () => {
           Remove Line Breaks
         </button>
 
+        <button onClick={openTextEditor} className="button-open-editor">Open in Text Editor</button>
+
         <button
           onClick={copyToClipboard}
           className="button-copy"
@@ -215,6 +256,14 @@ const SreelipiToUnicodeConverter = () => {
 
       </div>
     </div>
+    <div class='modal-container'>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          history={conversionHistory}
+          clearHistory={clearHistory}
+        />
+      </div>
     </>
   );
 };

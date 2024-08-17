@@ -161,11 +161,14 @@ const ConverterPage = ({ conversionType }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(()=>{
-     setInputText('');
-     setOutputText('');
-  },[conversionType])
-
+  useEffect(() => {
+    setInputText('');
+    setOutputText('');
+    // Load conversion history from local storage
+    const historyKey = `${conversionType}_history`;
+    const savedHistory = JSON.parse(localStorage.getItem(historyKey)) || [];
+    setConversionHistory(savedHistory);
+  }, [conversionType]);
 
   const copyToClipboard = () => {
     toast.success('Copied');
@@ -174,7 +177,14 @@ const ConverterPage = ({ conversionType }) => {
 
   const removeLineBreaks = () => {
     toast.success('Removed');
-    setOutputText(outputText.replace(/\n/g, ' '));
+    let result = outputText.replace(/\n+/g, (match) => {
+      if (match === '\n\n') {
+        return '\n';  // Replace double newline with single newline
+      } else {
+        return ' ';   // Replace single newline with space
+      }
+    });
+    setOutputText(result);
   };
 
   const unicodeToAkruti = (unicodeText) => {
@@ -238,11 +248,11 @@ const ConverterPage = ({ conversionType }) => {
 
   const handleConvert = () => {
     let convertedText = '';
-    if(inputText === ''){
+    if (inputText === '') {
       toast('Please enter the required input', {
         icon: '✏️',
-    });
-    return;
+      });
+      return;
     }
     if (conversionType === 'akrutiToUnicode') {
       convertedText = akrutiToUnicode(inputText);
@@ -255,7 +265,11 @@ const ConverterPage = ({ conversionType }) => {
     // Save to local storage
     const historyKey = `${conversionType}_history`;
     const currentHistory = JSON.parse(localStorage.getItem(historyKey)) || [];
-    const newEntry = { raw: inputText, converted: convertedText };
+    const newEntry = {
+      date: new Date().toISOString(), // Use ISO format for consistency
+      raw: inputText,
+      converted: convertedText
+    };
     const updatedHistory = [...currentHistory, newEntry];
     localStorage.setItem(historyKey, JSON.stringify(updatedHistory));
 
@@ -265,7 +279,6 @@ const ConverterPage = ({ conversionType }) => {
   const handleOutputChange = (event) => {
     setOutputText(event.target.value);
   };
-
 
   const showConversionHistory = () => {
     setModalOpen(true);
@@ -282,7 +295,14 @@ const ConverterPage = ({ conversionType }) => {
 
   const openTextEditor = () => {
     navigate('/text-editor', { state: { text: outputText } });
-};
+  };
+
+  const clearHistory = () => {
+    const historyKey = `${conversionType}_history`;
+    localStorage.removeItem(historyKey);
+    setConversionHistory([]);
+    toast.success('History cleared');
+  };
 
   return (
     <div class='top'>
@@ -355,6 +375,7 @@ const ConverterPage = ({ conversionType }) => {
           isOpen={isModalOpen}
           onClose={closeModal}
           history={conversionHistory}
+          clearHistory={clearHistory}
         />
       </div>
     </div>

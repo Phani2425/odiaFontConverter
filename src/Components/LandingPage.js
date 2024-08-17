@@ -13,10 +13,11 @@ import { IconContext } from "react-icons";
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip'
 import FlashScreen from './FlashScreen';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
+import Footer from './Footer';
 
 const LandingPage = ({ onConverterClick }) => {
-    
+
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [activeFAQ, setActiveFAQ] = useState(null);
@@ -52,11 +53,11 @@ const LandingPage = ({ onConverterClick }) => {
         autoplay: true,
         autoplaySpeed: 3000,
     };
-    
+
 
     return (
         <div className={isDarkMode ? 'dark-mode' : ''}>
-                        {showFlashScreen ? (
+            {showFlashScreen ? (
                 <FlashScreen onFinished={handleFlashScreenFinish} />
             ) : (
                 <motion.div
@@ -83,7 +84,7 @@ const LandingPage = ({ onConverterClick }) => {
                             <p>Convert text from legacy fonts to Unicode simply and quickly.</p>
                         </div></Link>
 
-                    <Link to={'/unicode-and-akruti-converter'} style={{ textDecoration: 'none', color: 'black' }} data-tooltip-id="my-tooltip" data-tooltip-content= "Converts Unicode Odia text back to Akruti script.">
+                    <Link to={'/unicode-and-akruti-converter'} style={{ textDecoration: 'none', color: 'black' }} data-tooltip-id="my-tooltip" data-tooltip-content="Converts Unicode Odia text back to Akruti script.">
                         <div className="converter-card" onClick={() => onConverterClick('unicodeToAkruti')}>
                             <IconContext.Provider value={{ size: "3em", color: 'black', className: "icons" }}>
 
@@ -157,7 +158,7 @@ const LandingPage = ({ onConverterClick }) => {
                             <div key={index} className="faq-item">
                                 <div className="faq-question" onClick={() => toggleFAQ(index)}>
                                     <h3 >{faq.question}</h3>
-                                    <span>{activeFAQ === index ? (<FaChevronUp/>) : (<FaChevronDown/>)}</span>
+                                    <span>{activeFAQ === index ? (<FaChevronUp />) : (<FaChevronDown />)}</span>
                                 </div>
                                 {activeFAQ === index && (
                                     <div className="faq-answer">
@@ -169,9 +170,7 @@ const LandingPage = ({ onConverterClick }) => {
                     </div>
                 </section>
 
-                <section className="cta-section">
-                    <button id='cta-button'>Contact Us</button>
-                </section>
+                    <Footer/>
 
             </main>
 
@@ -184,7 +183,7 @@ const LandingPage = ({ onConverterClick }) => {
                 </button>
             )}
 
-       <Tooltip id="my-tooltip" />  
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };

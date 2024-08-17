@@ -1,34 +1,103 @@
 /* Modal.css */
 .modal-overlay {
-  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
-  backdrop-filter: blur(1px);
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); 
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 90%;
-  height: 60%;
   max-width: 600px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-30px);
+  animation: slideUp 0.3s ease-out forwards; 
   display: flex;
   flex-direction: column;
 }
 
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+  }
+}
+
 .modal-close-button {
-  background: #007bff;
+  background-color: #4f46e5;
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 20px;
 }
 
 .modal-close-button:hover {
-  background: #0056b3;
+  background-color: #6366f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.history-preview {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.history-preview:hover {
+  background-color: #f0f0f0;
+}
+
+.history-details {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: max-height 0.3s ease;
+}
+
+.btn-grp{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.clear-history{
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 20px;
+}
+
+.clear-history:hover {
+  background-color: #6366f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); 
 }
