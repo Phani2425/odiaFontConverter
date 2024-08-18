@@ -31,9 +31,13 @@
 
 }
 
-
 .textarea:last-child {
   margin-right: 0;
+}
+
+.textarea:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
 }
 
 .buttons-container {

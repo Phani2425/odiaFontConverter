@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './SreelipiToUnicodePage.css';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ const SreelipiToUnicodeConverter = () => {
   const navigate = useNavigate();
 
   const array_one = [
-    ">", " ।", "ÿ", "", "􀃛", "", "ç§", "§ç", "􀁞", "{", "{ç ", "ç{", "{ç", "ç{", "ôæ", "æô", " {# ", "#{", "{#", "#{",
+    "&quot;","'","&#39;", "'", ">", " ।", "ÿ", "", "􀃛", "", "ç§", "§ç", "􀁞", "{", "{ç ", "ç{", "{ç", "ç{", "ôæ", "æô", " {# ", "#{", "{#", "#{",
     "¿â", "â¿", "􀀃", " ", "  ", " ", "C", "ଈ", "þ#", "ତ୍ମ", "Œ", "ତ୍ପ", "”", "ଦ୍ଦ", "b", "ଚ୍ଛ", "t", "ଟ୍ଟ", "􀁲", "ଦ୍ଦ",
     "􀁪", "ତ୍ମ", "􀁧", "ତ୍କ", "û", "ତ୍ସ", "􀁩", "ତ୍ତ୍ଵ", "½", "୍ମ", "􀁵", "ଦ୍ଭ", "", "↑", "#", "ି", "¸", "ମ୍ପ", "¹",
     "ମ୍ଫ", "¼", "ମ୍ମ", "Ú", "ସ୍ତ୍ର", "Í", "ଷ୍କ", "O", "କ୍ସ", "Ð", "ଷ୍ଣ", "À", "ର", "à", "ଲ", "Ü", "ହ", "􀁨", "ତ୍ତ",
@@ -32,7 +32,7 @@ const SreelipiToUnicodeConverter = () => {
     "ë", "ୁ", "􀃇", "ୁ", "í", "ୂ", "õ ", "ୃ", "õ", "ୃ", "ô", "ଁ", "􀁥", "ଃ", "…", "ଃ", "ú", "୍‍", "ó", "ଂ", "]",
     "ିଁ", "â", "୍ଲ", "È", "୍ଳ", "úÿ", "୍‌", ' ̄', "ବ", '̄', "ବ", ' ́', "୍ୱ", '́', "୍ୱ", '̈', 'ପ', "A", "ଅ", "􀀤",
     "ଅ", "ଅା", "ଆ", "B", "ଇ", "􀀥", "ଇ", "D", "ଉ", "􀀧", "ଉ", "E", "ଊ", "J", "ଋ", "F", "ଏ", "G", "ଐ", "􀀪", "ଐ",
-    "H", "ଓ", "I", "ଔ", "K", "ଔ", "0", "୦", "1", "୧", "2", "୨", "3", "୩", "4", "୪", "5", "୫", "6", "୬", "7", "୭", "8", "୮", "9", "୯"
+    "H", "ଓ", "I", "ଔ", "K", "ଔ", "0", "୦", "1", "୧", "2", "୨", "3", "୩", "4", "୪", "5", "୫", "6", "୬", "7", "୭", "8", "୮", "9", "୯",
   ];
 
 
@@ -146,6 +146,15 @@ const SreelipiToUnicodeConverter = () => {
  
      setConversionHistory(updatedHistory);
   };
+
+  useEffect(() => {
+    setLegacyText('');
+    setUnicodeText('');
+    // Load conversion history from local storage
+    const historyKey = `sreelipiToUnicode_history`;
+    const savedHistory = JSON.parse(localStorage.getItem(historyKey)) || [];
+    setConversionHistory(savedHistory);
+  }, []);
 
 
   const handleOutputChange = (event) => {

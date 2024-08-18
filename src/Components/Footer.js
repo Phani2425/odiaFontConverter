@@ -1,10 +1,12 @@
-// Footer.js
 import React from 'react';
 import './Footer.css'; // Import the CSS file
 
 const Footer = () => {
   return (
     <footer className="footer">
+            <div className="contact-text">
+        <p>Contact Us for More Information</p>
+      </div>
       <div className="map-and-info">
         <div className="map-container">
           <iframe
@@ -14,6 +16,7 @@ const Footer = () => {
             style={{ border: 0 }}
             allowFullScreen=""
             className="map-iframe"
+            title="Unnatipathe Location"
           ></iframe>
         </div>
         <div className="info-box">
@@ -23,6 +26,7 @@ const Footer = () => {
           <p>Email: <a href="mailto:unnatipathe@gmail.com">unnatipathe@gmail.com</a></p>
         </div>
       </div>
+
     </footer>
   );
 };
